@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.hit.sb.cart.mapper.ICartMapper">
+
+  <!-- 插入购物车数据 -->
+  <!-- Integer insert(Cart cart) -->
+  <insert id="insert" useGeneratedKeys="true" keyProperty="cid">
+    INSERT INTO sb_cart (
+      uid, pid, num, price, 
+      created_time, modified_time
+    ) VALUES (
+      #{uid}, #{pid}, #{num}, #{price}, 
+     #{createdtime}, #{modifiedtime}
+    )
+  </insert>
+  
+  <!-- 修改购物车中商品的数量 -->
+  <!-- Integer updateNumByCid(
+      @Param("cid") int cid, 
+      @Param("num") int num,
+      @Param("modifiedtime") Date modifiedtime
+  ); -->
+  <update id="update">
+    UPDATE
+      sb_cart
+    SET
+      num=#{num},
+      modified_time=#{modifiedtime}
+    WHERE
+      cid=#{cid}
+  </update>
+  
+  <!-- 查询某用户在购物车添加的某商品的详情 -->
+  <!-- Cart findByUidAndPid(
+      @Param("uid") int uid, 
+      @Param("pid") int pid
+  ); -->
+  <select id="selectById" resultType="cart">
+    SELECT * FROM sb_cart WHERE uid=#{uid} AND pid=#{pid}
+  </select>
+
+</mapper>

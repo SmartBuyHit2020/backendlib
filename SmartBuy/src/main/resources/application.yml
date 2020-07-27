@@ -1,20 +1,18 @@
-
 server:
-  port: 8200
- 
+  port: 8080
  
 spring:
   datasource:
-    username: root
-    password: hit1160300919
-    url: jdbc:mysql://localhost:3319/smartbuy?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    username: hx
+    password: hit1160300908
+    url: jdbc:mysql://smartbuy.mysql.rds.aliyuncs.com:3307/smartbuy?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
  
 mybatis:
-  mapper-locations: classpath:mapping/*Mapper.xml
-  type-aliases-package: com.hit.sb.cart.model
+  mapper-locations: classpath:mapping/**/*.xml
+  type-aliases-package: com.hit.sb.hr.model,com.hit.sb.admin.model,com.hit.sb.cart.model
  
 #showSql
 logging:
   level:
-    com.hit.sb.mapper : debug
+     com.hit.sb:  debug
