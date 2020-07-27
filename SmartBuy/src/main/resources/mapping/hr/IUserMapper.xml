@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hit.sb.hr.mapper.IUserMapper">
+
+	<resultMap id="UserResultMap" type="User" >
+		<id property="no" column="USERNO"/>
+		<result property="id" column="USERID"/>
+		<result property="password" column="USERPASSWORD"/>
+		<result property="name" column="USERNAME"/>
+		<result property="sex" column="USERSEX"/>
+		<result property="age" column="USERAGE"/>
+		<result property="email" column="USEREMAIL"/>
+		<result property="phone" column="USERPHONE"/>
+		<result property="address" column="USERADDRESS"/>
+	</resultMap>
+ 
+	<insert id="insert" parameterType="User" keyProperty="no"   keyColumn="USERNO"  useGeneratedKeys="true">
+	insert into sb_user (USERID,USERNAME,USERSEX,USERAGE,USEREMAIL,USERPHONE,USERADDRESS) values (#{id},#{name},#{sex},#{age},#{email},#{phone},#{address})
+ 	</insert>
+  
+ 	<update id="update">
+ 	update  sb_user set USERID=#{id},USERNAME=#{name},USERSEX=#{sex},USERAGE=#{age},USEREMAIL=#{email},USERPHONE=#{phone},USERADDRESS=#{address} where USERNO=#{no}
+ 	</update>
+  
+	<delete id="delete">
+ 	delete from sb_user  where USERNO=#{no} 
+ 	</delete>
+  
+ 	<select id="selectByAll"  resultMap="UserResultMap">
+ 	select *  from sb_user
+ 	</select>
+ 	
+ 	<select id="selectByAllWithPage" resultMap="UserResultMap">
+ 	select *  from sb_user limit #{start},#{rows}
+ 	</select>
+ 	
+ 	<select id="selectCountByAll" resultType="_int">
+ 	select count(*)  from sb_user
+ 	</select>
+ 
+ 	<select id="selectByNo"  resultMap="UserResultMap">
+ 	select * from sb_user where USERNO=#{no}
+ 	</select>
+  
+</mapper>

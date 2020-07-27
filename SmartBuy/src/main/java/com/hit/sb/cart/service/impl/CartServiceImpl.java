@@ -17,7 +17,7 @@ import com.hit.sb.cart.service.ICartService;
 public class CartServiceImpl implements ICartService {
 
 	@Autowired 
-	  private ICartMapper cartMapper;
+	  private ICartMapper cartMapper=null;
 	@Override
 	public void addToCart(int uid, int pid, int amount) throws Exception {
 		Date now = new Date();
