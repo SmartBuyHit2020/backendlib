@@ -1,3 +1,4 @@
+
 package com.hit.sb.cart.controller;
 
 import javax.servlet.http.HttpSession;
@@ -12,6 +13,8 @@ import com.hit.sb.cart.service.ICartService;
 import com.hit.sb.controller.BaseController;
 import com.hit.sb.restresult.Result;
 
+
+
 @RestController
 @RequestMapping(value="/carts")
 @CrossOrigin(origins = {"*", "null"})
@@ -25,6 +28,9 @@ public class CartController extends BaseController{
 	    //int uid = getUidFromSession(session);
 	    // 调用业务方法执行功能
 	    cartService.addToCart(0, pid, amount);
+	    
+	    result.setStatus("OK");
+        result.setMessage("加入购物车成功!");
 	    // 响应成功
 	    return result;
 	  }
