@@ -3,6 +3,7 @@ package com.hit.sb.cart.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,6 +14,7 @@ import com.hit.sb.restresult.Result;
 
 @RestController
 @RequestMapping(value="/carts")
+@CrossOrigin(origins = {"*", "null"})
 public class CartController extends BaseController{
 	@Autowired
 	  private ICartService cartService;
