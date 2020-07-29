@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hit.sb.goods.mapper.IGoodsMapper">
+
+	<resultMap id="GoodsResultMap" type="Goods" >
+		<id property="id" column="GOODID"/>
+		<result property="itemid" column="ITEMID"/>
+		<result property="name" column="NAME"/>
+		<result property="imageurl" column="IMAGE"/>
+		<result property="price" column="PRICE"/>
+		<result property="num" column="NUM"/>
+
+
+	</resultMap>
+ 
+	<insert id="insert" parameterType="Goods" keyProperty="id"   keyColumn="GOODID"  useGeneratedKeys="true">
+	insert into sb_goods (ITEMID,NAME,IMAGE,PRICE,NUM) values (#{itemid},#{name},#{imageurl},#{price},#{num})
+ 	</insert>
+  
+ 	<update id="update">
+ 	update  sb_goods set ITEMID=#{itemid},NAME=#{name},IMAGE=#{imageurl},PRICE=#{price},NUM#{num} where GOODID=#{id}
+ 	</update>
+  
+	<delete id="delete">
+ 	delete from sb_goods  where GOODID=#{id}
+ 	</delete>
+  
+ 	<select id="selectByAll"  resultMap="GoodsResultMap">
+ 	select *  from sb_goods
+ 	</select>
+ 	
+ 	<select id="selectByAllWithPage" resultMap="GoodsResultMap">
+
+ 	select *  from  sb_goods limit #{start},#{rows}
+ 	</select>
+ 	
+ 	<select id="selectCountByAll" resultType="java.lang.Integer">
+ 	select count(*)  from sb_goods
+ 	</select>
+ 
+ 	<select id="selectById"  resultMap="GoodsResultMap">
+ 	select * from sb_goods where GOODID=#{id}
+ 	</select>
+	<select id="selectByItemid"  resultMap="GoodsResultMap">
+ 	select * from sb_goods where ITEMID=#{itemid}
+ 	</select>
+  
+</mapper>
