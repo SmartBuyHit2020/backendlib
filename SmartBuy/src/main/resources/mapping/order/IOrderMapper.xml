@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hit.sb.order.mapper.IOrderMapper">
+
+	<resultMap id="OrderResultMap" type="Order" >
+		<id property="id" column="OrderID"/>
+		<result property="goodsNumber" column="goods_total"/>
+		<result property="totalMoney" column="whole_money"/>
+		<result property="timeOfOccur" column="TimeOfOccurrence"/>
+		<result property="user" column="UserID"/>
+	</resultMap>
+	<insert id="insert" parameterType="Order" keyProperty="id"   keyColumn="OrderID"  useGeneratedKeys="true">
+	insert into sb_order (OrderID,goods_total,whole_money,TimeOfOccurrence,UserID) values (#{id},#{goodsNumber},#{totalMoney},#{timeOfOccur},#{user})
+ 	</insert>
+ 	<update id="update">
+ 	update  sb_order goods_total=#{goodsNumber},whole_money=#{totalMoney},TimeOfOccurence=#{timeOfOccur},UserID#{user} where OrderID=#{id}
+ 	</update>
+	<delete id="delete">
+ 	delete from sb_order  where OrderID=#{id}
+ 	</delete>
+ 	<select id="selectByID"  resultMap="OrderResultMap">
+ 	select * from sb_order where OrderID=#{id}
+ 	</select>
+  
+</mapper>

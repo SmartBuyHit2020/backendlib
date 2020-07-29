@@ -10,7 +10,7 @@ spring:
  
 mybatis:
   mapper-locations: classpath:mapping/**/*.xml
-  type-aliases-package: com.hit.sb.hr.model,com.hit.sb.admin.model,com.hit.sb.cart.model,com.hit.sb.goods.model
+  type-aliases-package: com.hit.sb.hr.model,com.hit.sb.admin.model,com.hit.sb.cart.model,com.hit.sb.goods.model,com.hit.sb.order.model
  
 #showSql
 logging:
