@@ -22,6 +22,10 @@ public interface IGoodsService {
     public int getCountByAll() throws Exception;
     //取得商品的显示页数
     public int getPageCountByAll(int rows) throws Exception;
+    //查询所有商品
+    public List<GoodsModel> getListById() throws Exception;
+    //查询所有分类商品
+    public  List<GoodsModel> getListByItemid(int itemid) throws Exception;
     //取得分类商品的个数
     //public int getItemCountByAll(int rows,int itemid) throws Exception;
     //取得分类商品的显示页数

@@ -23,6 +23,7 @@ public interface IGoodsMapper {
     //取得商品的显示页数
     public List<GoodsModel> selectByAllWithPage(@Param("start") int start, @Param("rows") int rows) throws Exception;
     //取得分类商品的个数
-
+    //根据商品itemid查询该商品信息
+    public  List<GoodsModel>  selectByItemid(int itemid)throws Exception;
 
 }

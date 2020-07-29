@@ -17,7 +17,7 @@ public class GoodsController {
         ds.add(dm);
         Result<String> result=new Result<String>();
         result.setStatus("OK");
-        result.setMessage("增加用户成功!");
+        result.setMessage("增加商品成功!");
         return result;
     }
     @PostMapping(value="/modify")
@@ -25,7 +25,7 @@ public class GoodsController {
         ds.modify(dm);
         Result<String> result=new Result<String>();
         result.setStatus("OK");
-        result.setMessage("修改用户成功!");
+        result.setMessage("修改商品成功!");
         return result;
     }
     @PostMapping(value="/delete")
@@ -33,7 +33,17 @@ public class GoodsController {
         ds.delete(dm);
         Result<String> result=new Result<String>();
         result.setStatus("OK");
-        result.setMessage("删除用户成功!");
+        result.setMessage("删除商品成功!");
+        return result;
+    }
+    //取得部门列表，
+    @GetMapping(value="/list/all")
+    public Result<GoodsModel> getListByAll() throws Exception{
+        Result<GoodsModel> result= new Result<>();
+
+        result.setList(ds.getListByAll());
+        result.setStatus("OK");
+        result.setMessage("取得商品列表分页方式成功!");
         return result;
     }
     //取得部门列表，分页模式
@@ -48,7 +58,7 @@ public class GoodsController {
         result.setPage(page);
         result.setList(ds.getListByAllWithPage(rows, page));
         result.setStatus("OK");
-        result.setMessage("取得用户列表分页方式成功!");
+        result.setMessage("取得商品列表分页方式成功!");
         return result;
     }
     @GetMapping(value="/get")
@@ -57,7 +67,16 @@ public class GoodsController {
         result.setResult(ds.getById(id));
 
         result.setStatus("OK");
-        result.setMessage("取得指定用户对象成功!");
+        result.setMessage("取得指定商品成功!");
+        return result;
+    }
+    @GetMapping(value="/list/all/itemid")
+    public Result<GoodsModel> getListByItemid(@RequestParam(required=true) int itemid) throws Exception{
+        Result<GoodsModel> result=new Result<GoodsModel>();
+        result.setList(ds.getListByItemid(itemid));
+
+        result.setStatus("OK");
+        result.setMessage("取得指定分类商品成功!");
         return result;
     }
 

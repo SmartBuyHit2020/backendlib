@@ -35,12 +35,15 @@
  	select *  from from sb_goods limit #{start},#{rows}
  	</select>
  	
- 	<select id="selectCountByAll" resultType="_int">
+ 	<select id="selectCountByAll" resultType="java.lang.Integer">
  	select count(*)  from sb_goods
  	</select>
  
  	<select id="selectById"  resultMap="GoodsResultMap">
  	select * from sb_goods where GOODID=#{id}
+ 	</select>
+	<select id="selectByItemid"  resultMap="GoodsResultMap">
+ 	select * from sb_goods where ITEMID=#{itemid}
  	</select>
   
 </mapper>

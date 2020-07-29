@@ -65,7 +65,16 @@ public class GoodsServiceImpl implements IGoodsService {
         return pageCount;
     }
 
+    @Override
+    public List<GoodsModel> getListById() throws Exception {
+        return null;
+    }
 
+
+    @Override
+    public List<GoodsModel> getListByItemid(int itemid) throws Exception {
+        return goodsMappeer.selectByItemid(itemid);
+    }
 
 
 }
