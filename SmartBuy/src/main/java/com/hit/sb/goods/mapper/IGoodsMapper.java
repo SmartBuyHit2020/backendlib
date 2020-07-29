@@ -13,7 +13,7 @@ public interface IGoodsMapper {
     //修改商品内容
     public void update(GoodsModel gm)throws Exception;
     //删除商品
-    public  void delete(GoodsModel gm)throws Exception;
+    public  void delete(int id)throws Exception;
     //根据商品id查询该商品信息
     public GoodsModel selectById(int id);
     //查询所有商品

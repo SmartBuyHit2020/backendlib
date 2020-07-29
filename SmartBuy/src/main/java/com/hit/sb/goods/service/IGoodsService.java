@@ -10,9 +10,9 @@ public interface IGoodsService {
     //修改商品内容
     public void modify(GoodsModel gm)throws Exception;
     //删除商品
-    public  void delete(GoodsModel gm)throws Exception;
+    public  void delete(int id)throws Exception;
     //根据商品id查询该商品信息
-    public  GoodsModel getById(int id);
+    public  GoodsModel getById(int id) throws Exception;
     //根据商品分类查询某类别的全部商品
    // public List<GoodsModel> getByItemide(int itemid)throws Exception;
     //查询所有商品

@@ -32,7 +32,7 @@
  	</select>
  	
  	<select id="selectByAllWithPage" resultMap="GoodsResultMap">
- 	select *  from from sb_goods limit #{start},#{rows}
+ 	select *   from sb_goods limit #{start},#{rows}
  	</select>
  	
  	<select id="selectCountByAll" resultType="java.lang.Integer">
