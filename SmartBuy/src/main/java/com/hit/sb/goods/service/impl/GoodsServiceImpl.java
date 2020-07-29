@@ -27,12 +27,12 @@ public class GoodsServiceImpl implements IGoodsService {
     }
 
     @Override
-    public void delete(GoodsModel gm) throws Exception {
-        goodsMappeer.delete(gm);
+    public void delete(int id) throws Exception {
+        goodsMappeer.delete(id);
     }
 
     @Override
-    public GoodsModel getById(int id) {
+    public GoodsModel getById(int id) throws Exception {
         return  goodsMappeer.selectById(id);
     }
 

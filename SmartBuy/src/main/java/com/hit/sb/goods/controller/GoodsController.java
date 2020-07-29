@@ -8,12 +8,13 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value="/goods")
+@CrossOrigin(origins = {"*", "null"})
 public class GoodsController {
     @Autowired
     private IGoodsService ds=null;
 
     @PostMapping(value="/add")
-    public Result<String> add(GoodsModel dm) throws Exception{
+    public Result<String> add(@RequestBody GoodsModel dm) throws Exception{
         ds.add(dm);
         Result<String> result=new Result<String>();
         result.setStatus("OK");
@@ -21,16 +22,16 @@ public class GoodsController {
         return result;
     }
     @PostMapping(value="/modify")
-    public Result<String> modify(GoodsModel dm) throws Exception{
+    public Result<String> modify(@RequestBody GoodsModel dm) throws Exception{
         ds.modify(dm);
         Result<String> result=new Result<String>();
         result.setStatus("OK");
         result.setMessage("修改商品成功!");
         return result;
     }
-    @PostMapping(value="/delete")
-    public Result<String> delete(GoodsModel dm) throws Exception{
-        ds.delete(dm);
+    @GetMapping(value="/delete")
+    public Result<String> delete(@RequestParam(required=true) int id) throws Exception{
+        ds.delete(id);
         Result<String> result=new Result<String>();
         result.setStatus("OK");
         result.setMessage("删除商品成功!");

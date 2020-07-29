@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hit.sb.goods.mapper.IItemMapper">
+
+    <resultMap id="ItemResultMap" type="Item" >
+        <id property="id" column="ID"/>
+        <result property="name" column="NAME"/>
+
+    </resultMap>
+
+    <insert id="insert" parameterType="Item" keyProperty="id"   keyColumn="ID"  useGeneratedKeys="true">
+	insert into sb_goods_item (ID,NAME) values (#{id},#{name})
+ 	</insert>
+
+    <update id="update">
+ 	update  sb_goods_item set NAME=#{name}where ID=#{id}
+ 	</update>
+
+    <delete id="delete">
+ 	delete from sb_goods_item  where ID=#{id}
+
+ 	</delete>
+	<delete id="deleteGoods">
+ 	delete from sb_goods  where ITEMID=#{id}
+ 	</delete>
+
+    <select id="selectByAll"  resultMap="ItemResultMap">
+ 	select *  from sb_goods_item
+ 	</select>
+
+
+    <select id="selectById"  resultMap="ItemResultMap">
+ 	select * from sb_goods_item where ID=#{id}
+ 	</select>
+
+
+</mapper>
