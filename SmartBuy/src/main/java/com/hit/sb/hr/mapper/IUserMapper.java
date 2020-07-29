@@ -22,7 +22,7 @@ public interface IUserMapper {
 	public List<UserModel> selectByAllWithPage(@Param("start") int start,@Param("rows") int rows) throws Exception;
 	//取得用户的个数
 	public int selectCountByAll() throws Exception;
-	//根据用户的no（PK）取得指定的部门对象
+	//根据用户的no（PK）取得指定的用户对象
 	public UserModel selectByNo(int no) throws Exception;
 	
 

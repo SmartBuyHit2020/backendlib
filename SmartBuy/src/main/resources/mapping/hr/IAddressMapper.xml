@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hit.sb.hr.mapper.IAddressMapper">
+	<!-- 地址查询基础映射，不包含关联属性 -->
+	<resultMap  id="AddressResultMap" type="Address">
+		<id property="id" column="ADDRESSID" />
+		<result property="province" column="ADDRESSPROVINCE"/>
+		<result property="city" column="ADDRESSCITY"/>
+		<result property="detail" column="ADDRESSDETAIL"/>	
+	</resultMap>
+	<!-- 关联地址用户的结果映射 -->
+	<resultMap  id="AddressWithUserResultMap" type="Address" extends="AddressResultMap">
+		<!-- 使用内嵌式select方式取得关联的用户对象信息 -->
+		<!-- 
+		<association property="department" javaType="Department" column="DEPTNO" select="com.neusoft.oa.hr.dao.IDepartmentDao.selectByNo"   ></association>
+		 -->
+		<association property="user" resultMap="com.hit.sb.hr.mapper.IUserMapper.UserResultMap" />
+	</resultMap>
+	
+	
+	
+	<insert id="insert" parameterType="Address" >
+	insert into sb_address (ADDRESSID,DEPTNO,ADDRESSPROVINCE,ADDRESSCITY,ADDRESSDETAIL) 
+	values (#{id},#{user.no},#{province},#{city},#{detail})
+ 	</insert>
+
+ 	
+	<update id="update" parameterType="Address">
+	update sb_address set DEPTNO=#{user.no},ADDRESSPROVINCE=#{province},ADDRESSCITY=#{city},ADDRESSDETAIL=#{sex} where ADDRESSID=#{id}
+	</update>
+
+
+	
+	<delete id="delete">
+ 	delete from sb_address  where ADDRESSID=#{id} 
+ 	</delete>
+ 	
+ 	
+ 	<select id="selectCountByAll" resultType="_int">
+ 	select count(*)  from sb_address
+ 	</select>
+ 	
+  	<!-- 取得所有地址列表，不取关联的用户 -->
+ 	<select id="selectListByAll"  resultMap="AddressResultMap">
+ 	select *  from sb_address
+ 	</select>
+ 	
+ 	<!-- 取得所有地址列表，取关联的用户， 分页模式 -->
+ 	<select id="selectListByAllWithPageWithUser" resultMap="AddressWithUserResultMap">
+ 	select *  from sb_address a inner join sb_user b on a.USERNO=b.USERNO limit #{start},#{rows}
+ 	</select>
+ 	
+ 
+ 
+ 	<select id="selectById" resultMap="AddressResultMap">
+ 	select * from sb_address where ADDRESSID=#{id}
+ 	</select>
+ 	
+ 	<select id="selectByIdWithUser" resultMap="AddressWithUserResultMap">
+ 	select a.*,b.* from sb_address a inner join sb_user b on a.USERNO=b.USERNO  where ADDRESSID=#{id}
+ 	</select>
+ 	
+ 	
+ 	
+  
+</mapper>
