@@ -35,7 +35,6 @@
 
  	select *  from  sb_goods limit #{start},#{rows}
 
- 	select *   from sb_goods limit #{start},#{rows}
 
  	</select>
  	
