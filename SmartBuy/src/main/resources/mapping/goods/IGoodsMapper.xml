@@ -37,12 +37,22 @@
 
 
  	</select>
+	<select id="selectByItemWithPage" resultMap="GoodsResultMap">
+
+ 	select *  from  sb_goods where ITEMID=#{itemid} limit #{start},#{rows}
+
+
+ 	</select>
  	
  	<select id="selectCountByAll" resultType="java.lang.Integer">
  	select count(*)  from sb_goods
  	</select>
- 
- 	<select id="selectById"  resultMap="GoodsResultMap">
+	<select id="selectCountByItem" resultType="java.lang.Integer">
+ 	select count(*)  from sb_goods where ITEMID=#{itemid}
+ 	</select>
+
+
+	<select id="selectById"  resultMap="GoodsResultMap">
  	select * from sb_goods where GOODID=#{id}
  	</select>
 	<select id="selectByItemid"  resultMap="GoodsResultMap">

@@ -19,9 +19,16 @@ public interface IGoodsService {
     public List<GoodsModel> getListByAll() throws Exception;
     //取得所有用户列表,分页模式
     public List<GoodsModel> getListByAllWithPage(int rows, int page) throws Exception;
+
+    public List<GoodsModel> getListByItemWithPage(int rows, int page,int itemid) throws Exception;
+
     public int getCountByAll() throws Exception;
     //取得商品的显示页数
     public int getPageCountByAll(int rows) throws Exception;
+    //查询所有商品
+    public int getCountByItem(int itemid) throws Exception;
+    //取得商品的显示页数
+    public int getPageCountByItem(int rows,int itemid) throws Exception;
     //查询所有商品
     public List<GoodsModel> getListById() throws Exception;
     //查询所有分类商品

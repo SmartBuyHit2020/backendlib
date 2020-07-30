@@ -47,7 +47,7 @@ public class GoodsController {
         result.setMessage("取得商品列表分页方式成功!");
         return result;
     }
-    //取得部门列表，分页模式
+    //取得商品列表，分页模式
     @GetMapping(value="/list/all/page")
     public Result<GoodsModel> getListByAllWitgPage(@RequestParam(required=false,defaultValue="10") int rows, @RequestParam(required=false,defaultValue="1") int page) throws Exception{
         Result<GoodsModel> result= new Result<>();
@@ -58,6 +58,21 @@ public class GoodsController {
         result.setRows(rows);
         result.setPage(page);
         result.setList(ds.getListByAllWithPage(rows, page));
+        result.setStatus("OK");
+        result.setMessage("取得商品列表分页方式成功!");
+        return result;
+    }
+    //取得商品列表，分页模式
+    @GetMapping(value="/list/all/page/item")
+    public Result<GoodsModel> getListByIytemWitgPage(@RequestParam(required=false,defaultValue="10") int rows, @RequestParam(required=false,defaultValue="1") int page,@RequestParam(required=false,defaultValue="1")int itemid) throws Exception{
+        Result<GoodsModel> result= new Result<>();
+        result.setCount(ds.getCountByItem(itemid));
+        //System.out.println(ds.getCountByAll());
+        result.setPageCount(ds.getPageCountByItem(rows,itemid));
+        //System.out.println(ds.getPageCountByAll(rows));
+        result.setRows(rows);
+        result.setPage(page);
+        result.setList(ds.getListByItemWithPage(rows, page,itemid));
         result.setStatus("OK");
         result.setMessage("取得商品列表分页方式成功!");
         return result;
