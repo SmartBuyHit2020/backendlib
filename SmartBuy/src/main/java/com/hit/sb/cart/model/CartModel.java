@@ -12,7 +12,7 @@ public class CartModel implements Serializable {
 		private int uid;
 		private int pid;
 		private int num;
-		private double price;
+		private float price;
 		private Date createdtime;
 		private Date modifiedtime;
 	  
@@ -43,7 +43,7 @@ public class CartModel implements Serializable {
 	public double getPrice() {
 		return price;
 	}
-	public void setPrice(double d) {
+	public void setPrice(float d) {
 		this.price = d;
 	}
 	public Date getCreatedtime() {
