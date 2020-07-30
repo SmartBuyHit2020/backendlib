@@ -33,7 +33,7 @@ public class ItemController {
     @GetMapping(value="/delete")
     public Result<String> delete(@RequestParam(required=true) int id) throws Exception{
         ds.delete(id);
-        ds.deleteGoods(id);
+       ds.deleteGoods(id);
         Result<String> result=new Result<String>();
         result.setStatus("OK");
         result.setMessage("删除商品类型成功!");

@@ -20,7 +20,7 @@
  	</insert>
   
  	<update id="update">
- 	update  sb_goods set ITEMID=#{itemid},NAME=#{name},IMAGE=#{imageurl},PRICE=#{price},NUM#{num} where GOODID=#{id}
+ 	update  sb_goods set ITEMID=#{itemid},NAME=#{name},IMAGE=#{imageurl},PRICE=#{price},NUM=#{num} where GOODID=#{id}
  	</update>
   
 	<delete id="delete">
