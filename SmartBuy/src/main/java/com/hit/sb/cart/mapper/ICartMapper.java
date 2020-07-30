@@ -26,7 +26,7 @@ public interface ICartMapper {
 		//取得购物车中所有的商品列表
 		public List<CartModel> selectByAll() throws Exception;
 		//根据用户的id和商品的id查询购物车条目
-		public CartModel selectById(@Param("uid") int uid,@Param("pid") int pid) throws Exception;
+		public CartModel selectByUidAndId(@Param("uid") int uid,@Param("pid") int pid) throws Exception;
 		//获取购物车商品详细信息
 		List<CartVo> findByUid(Integer uid);
 		//将用户的购物车清除

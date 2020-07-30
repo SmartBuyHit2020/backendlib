@@ -12,6 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.hit.sb.cart.mapper.ICartMapper;
 import com.hit.sb.cart.model.CartModel;
 import com.hit.sb.cart.service.ICartService;
+import com.hit.sb.goods.model.GoodsModel;
+import com.hit.sb.goods.service.IGoodsService;
 import com.hit.sb.goods.service.impl.GoodsServiceImpl;
 import com.hit.sb.vo.CartVo;
 
@@ -21,16 +23,19 @@ public class CartServiceImpl implements ICartService {
 
 	@Autowired 
 	  private ICartMapper cartMapper=null;
+	
+	
 	@Override
 	public void addToCart(int uid, int pid, int amount) throws Exception {
 		Date now = new Date();
+		
 	    // 调用findByUidAndPid()查询购物车详情
 	    CartModel result = findByUidAndPid(uid, pid);
+	    
 	    // 判断查询结果是否为null
-	    if (result == null) {
+	    if (result==null) {
 	      // 是：表示该用户的购物车没有该商品，则需要执行insert操作
 	      // -- 调用productService.getById()得到商品详情，该数据中包含商品价格
-	    	GoodsServiceImpl product = new GoodsServiceImpl();
 	      // -- 创建新的Cart对象
 	      CartModel cart = new CartModel();
 	      // -- 补全Cart对象的属性：uid > 参数uid
@@ -40,7 +45,7 @@ public class CartServiceImpl implements ICartService {
 	      // -- 补全Cart对象的属性：num > 参数amount
 	      cart.setNum(amount);
 	      // -- 补全Cart对象的属性：price > 以上查询到的商品详情中包含价格
-	      cart.setPrice(product.getById(pid).getPrice());
+	      //cart.setPrice(product.getById(pid).getPrice());
 	      //cart.setPrice(9.9);//测试用，实际要取商品表价格
 	      cart.setCreatedtime(now);
 	      cart.setModifiedtime(now);
@@ -88,10 +93,10 @@ public class CartServiceImpl implements ICartService {
 		    }
 		  }
 	  
-	  private CartModel findByUidAndPid(Integer uid, Integer pid) throws Exception {
-		    return cartMapper.selectById(uid, pid);
+	  private CartModel findByUidAndPid(int uid, int pid) throws Exception {
+		    return cartMapper.selectByUidAndId(uid, pid);
 		  }
-	  private List<CartVo> findByUid(Integer uid) {
+	  private List<CartVo> findByUid(int uid) {
 		    return cartMapper.findByUid(uid);
 		  }
 	@Override
