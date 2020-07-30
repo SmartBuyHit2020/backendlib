@@ -4,14 +4,15 @@
 
 <mapper namespace="com.hit.sb.cart.mapper.ICartMapper">
 
+
   <!-- 插入购物车数据 -->
   <!-- Integer insert(Cart cart) -->
-  <insert id="insert" useGeneratedKeys="true" keyProperty="cid">
+  <insert id="insert" parameterType="Cart" useGeneratedKeys="true" keyProperty="cid">
     INSERT INTO sb_cart (
-      uid, pid, num, price, 
+      uid, pid, num, 
       created_time, modified_time
     ) VALUES (
-      #{uid}, #{pid}, #{num}, #{price}, 
+      #{uid}, #{pid}, #{num},
      #{createdtime}, #{modifiedtime}
     )
     <!-- 删除购物车某商品 -->
@@ -44,7 +45,7 @@
       @Param("uid") int uid, 
       @Param("pid") int pid
   ); -->
-  <select id="selectById" resultType="cart">
+  <select id="selectByUidAndId" resultType="Cart">
     SELECT * FROM sb_cart WHERE uid=#{uid} AND pid=#{pid}
   </select>
   
@@ -52,14 +53,14 @@
   <!-- List<CartVO> findByUid(Integer uid) -->
   <select id="findByUid" resultType="com.hit.sb.vo.CartVo">
     SELECT 
-      cid, uid, pid, sb_cart.num, sb_cart.price,
+      cid, uid, pid, sb_cart.num, sb_goods.PRICE,
       NAME, IMAGE
     FROM 
       sb_cart 
     LEFT JOIN
      sb_goods 
     ON 
-      sb_cart.pid=sb_goods.ITEMID 
+      sb_cart.pid=sb_goods.GOODID 
     WHERE 
       uid=#{uid}
     ORDER BY

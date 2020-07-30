@@ -6,13 +6,12 @@ import java.util.Date;
 import org.apache.ibatis.type.Alias;
 
 
-@Alias("cart")
+@Alias("Cart")
 public class CartModel implements Serializable {
 		private int cid;
 		private int uid;
 		private int pid;
 		private int num;
-		private float price;
 		private Date createdtime;
 		private Date modifiedtime;
 	  
@@ -40,12 +39,7 @@ public class CartModel implements Serializable {
 	public void setNum(int num) {
 		this.num = num;
 	}
-	public double getPrice() {
-		return price;
-	}
-	public void setPrice(float d) {
-		this.price = d;
-	}
+
 	public Date getCreatedtime() {
 		return createdtime;
 	}

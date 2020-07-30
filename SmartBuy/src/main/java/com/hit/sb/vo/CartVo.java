@@ -10,7 +10,7 @@ public class CartVo implements Serializable {
 		  private int uid;
 		  private int pid;
 		  private int num;
-		  private double price;
+		  private float price;
 		  private String name;
 		  private String image;
 		public int getCid() {
@@ -40,7 +40,7 @@ public class CartVo implements Serializable {
 		public double getPrice() {
 			return price;
 		}
-		public void setPrice(double price) {
+		public void setPrice(float price) {
 			this.price = price;
 		}
 		public String getName() {

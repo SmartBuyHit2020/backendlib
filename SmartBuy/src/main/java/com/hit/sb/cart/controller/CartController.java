@@ -46,7 +46,7 @@ public class CartController extends BaseController{
 	  // 返回成功与数据
 		Result<CartVo> result= new Result<>();
 		//int uid = getUidFromSession(session);
-		int uid =1;
+		int uid =0;//测试用，后面能获取httpsession后换成uid
 		result.setList(cartService.getByUid(uid));
 		result.setStatus("OK");
         result.setMessage("获取购物车列表成功!");
