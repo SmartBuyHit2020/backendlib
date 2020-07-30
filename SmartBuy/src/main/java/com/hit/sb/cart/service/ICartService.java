@@ -20,7 +20,7 @@ public interface ICartService {
 	 * @throws Exception 
 	   */
 	  List<CartVo> getByUid(int uid)throws Exception;
-	  public void delete(CartModel cm) throws Exception;
-	  public void clean(CartModel cm) throws Exception;
+	  public void delete(int uid, int pid) throws Exception;
+	  public void clean(int uid) throws Exception;
 	  
 }

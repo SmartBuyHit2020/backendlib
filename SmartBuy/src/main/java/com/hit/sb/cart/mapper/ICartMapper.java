@@ -20,9 +20,9 @@ public interface ICartMapper {
 							@Param("modifiedtime") Date modifiedtime
 							) throws Exception;
 		//删除购物车中的物品
-		public void delete(CartModel cm) throws Exception;
+		public void delete(int uid,int pid) throws Exception;
 		//清空购物车
-		public void clean(CartModel cm) throws Exception;
+		public void clean(int uid) throws Exception;
 		//取得购物车中所有的商品列表
 		public List<CartModel> selectByAll() throws Exception;
 		//根据用户的id和商品的id查询购物车条目

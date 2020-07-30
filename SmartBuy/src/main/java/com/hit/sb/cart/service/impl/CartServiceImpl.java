@@ -100,13 +100,13 @@ public class CartServiceImpl implements ICartService {
 		    return cartMapper.findByUid(uid);
 		  }
 	@Override
-	public void delete(CartModel cm) throws Exception {
-		cartMapper.delete(cm);
+	public void delete(int uid, int pid) throws Exception {
+		cartMapper.delete(uid,pid);
 		
 	}
 	@Override
-	public void clean(CartModel cm) throws Exception {
-		cartMapper.clean(cm);
+	public void clean(int uid) throws Exception {
+		cartMapper.clean(uid);
 		
 	}
 	

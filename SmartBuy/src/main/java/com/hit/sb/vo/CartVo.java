@@ -2,6 +2,9 @@ package com.hit.sb.vo;
 
 import java.io.Serializable;
 
+import org.apache.ibatis.type.Alias;
+
+
 public class CartVo implements Serializable {
 
 
