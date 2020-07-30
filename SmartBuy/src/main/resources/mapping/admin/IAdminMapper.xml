@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hit.sb.admin.mapper.IAdminMapper">
+	<resultMap id="AdminResultMap" type="Admin" >
+		<id property="id" column="ADMINID"/>
+		<result property="password" column="ADMINPASSWORD"/>
+		<result property="name" column="ADMINNAME"/>
+	</resultMap>
+ 	<update id="update">
+ 	update sb_admin set ADMINPASSWORD=#{password},ADMINNAME=#{name} where ADMINID=#{id}
+ 	</update>
+ 	<select id="getById"  resultMap="AdminResultMap">
+ 	select * from sb_admin where ADMINID=#{id}
+ 	</select>
+</mapper>
