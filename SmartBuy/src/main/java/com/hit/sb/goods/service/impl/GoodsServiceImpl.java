@@ -48,6 +48,11 @@ public class GoodsServiceImpl implements IGoodsService {
     }
 
     @Override
+    public List<GoodsModel> getListByItemWithPage(int rows, int page, int itemid) throws Exception {
+        return goodsMappeer.selectByItemWithPage(rows*(page-1), rows,itemid);
+    }
+
+    @Override
     public int getCountByAll() throws Exception {
         return   goodsMappeer.selectCountByAll();
     }
@@ -55,6 +60,25 @@ public class GoodsServiceImpl implements IGoodsService {
     @Override
     public int getPageCountByAll(int rows) throws Exception {
         int count=this.getCountByAll();
+        int pageCount=0;
+        if(count%rows==0) {
+            pageCount=count/rows;
+        }
+        else {
+            pageCount=count/rows+1;
+        }
+        return pageCount;
+    }
+
+    @Override
+    public int getCountByItem(int itemid) throws Exception {
+        return   goodsMappeer.selectCountByItem(itemid);
+
+    }
+
+    @Override
+    public int getPageCountByItem(int rows,int itemid) throws Exception {
+        int count=this.getCountByItem(itemid);
         int pageCount=0;
         if(count%rows==0) {
             pageCount=count/rows;

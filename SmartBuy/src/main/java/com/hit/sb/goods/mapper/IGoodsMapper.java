@@ -25,5 +25,7 @@ public interface IGoodsMapper {
     //取得分类商品的个数
     //根据商品itemid查询该商品信息
     public  List<GoodsModel>  selectByItemid(int itemid)throws Exception;
+    public int selectCountByItem( int itemid) throws Exception;
+    public List<GoodsModel> selectByItemWithPage(@Param("start") int start, @Param("rows") int rows, @Param("itemid")int itemid) throws Exception;
 
 }

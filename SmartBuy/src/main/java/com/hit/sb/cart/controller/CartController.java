@@ -4,11 +4,7 @@ package com.hit.sb.cart.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.hit.sb.cart.model.CartModel;
 import com.hit.sb.cart.service.ICartService;
@@ -25,7 +21,7 @@ import java.util.List;
 public class CartController extends BaseController{
 	@Autowired
 	  private ICartService cartService;
-	@PostMapping("/add")
+	@GetMapping("/add")
 	  public Result<String> add(Integer pid, Integer amount, HttpSession session) throws Exception {
 		Result<String> result=new Result<String>();
 	    // 从Session中获取uid
