@@ -32,11 +32,11 @@
  	</select>
  	
  	<select id="selectByAllWithPage" resultMap="GoodsResultMap">
-<<<<<<< HEAD
+
  	select *  from  sb_goods limit #{start},#{rows}
-=======
+
  	select *   from sb_goods limit #{start},#{rows}
->>>>>>> branch 'master' of https://github.com/SmartBuyHit2020/backendlib.git
+
  	</select>
  	
  	<select id="selectCountByAll" resultType="java.lang.Integer">
